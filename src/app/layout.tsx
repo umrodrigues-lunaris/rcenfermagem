@@ -120,6 +120,21 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'AW-16967651340');
             console.log('[GTAG DEBUG] ✅ Google Ads configurado (AW-16967651340)');
+
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-16967651340/TnstCM2YuvsbEIyg55o_',
+                'transaction_id': '',
+                'event_callback': callback
+              });
+              return false;
+            }
+            window.gtag_report_conversion = gtag_report_conversion;
           `}
         </Script>
       </head>
